@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading Roots</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header Starts -->
+    <header>
+      <div class="headerDiv">
+        <div class="imageSection">
+          <img src="./Images/download.png" alt="" />
+        </div>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About us</a>
+        <a href="#addBook">Add Book</a>
+        <a href="#books">All Books</a>
+        <a href="#message"><i class="fa fa-envelope icon"></i></a>
+        <a href="#notification" ><span class="notify"></span><i class="fa fa-bell icon "></i></a>
+        <a href="#users"><i class="fa fa-users icon"></i></a>
+        <a href="#account" class="user-name">jay01 <i class="fa fa-angle-down"> </i
+        ></a>
+      </nav>
+    </header>
+    <!-- Header Ends -->
+
+    <!-- Filter Section Starts -->
+    <div class="filterDiv">
+      <div class="filterDiv-main">
+        <h2>USER RELATED SELECTION</h2>
+        <div class="filterDiv-filterSection">
+          <label for="inputKeyword">Keyword Search</label>
+          <div class="inputDiv">
+            <i class="fa fa-search"></i>
+            <input
+              type="text"
+              id="inputKeyword"
+              placeholder="Search by title or author"
+            />
+          </div>
+        </div>
+        <label for="moreButton" class="more">
+          <input type="checkbox" id="moreButton" />
+          <i class="fa fa-angle-down"></i>
+        </label>
+      </div>
+      <div class="moreDiv">
+        <label for="year">
+          Year
+          <input type="number" placeholder="All" id="year" />
+        </label>
+        <label for="branch">
+          Branch
+          <select id="branch">
+            <option value="none">All</option>
+          </select>
+        </label>
+        <label for="available">
+          <input type="checkbox" id="available" />
+          Available only
+        </label>
+        <button id="filter">Filter</button>
+      </div>
+    </div>
+    <div class="sortDiv">
+      <strong>Total Books: <b id="numberOfBooks">4</b></strong>
+      <select>
+        <option value="none">Sort</option>
+        <option value="sort">Acending</option>
+        <option value="sort">Decending</option>
+      </select>
+    </div>
+    <!-- Filter Section Ends -->
+    <!-- Books Section Starts -->
+    <div class="books">
+      <div class="bookDiv">
+        <div class="book-imageDiv">
+          <img src="./Images/Range.jfif" alt="book1" />
+        </div>
+        <div class="books-details">
+          <strong class="title">Range </strong>
+          <strong class="author-owner">David Epstein, Jay</strong>
+          <div class="belowDiv">
+            <a href="request">Request</a>
+            <a href="learnMore" class="fa fa-arrow-right"></a>
+          </div>
+        </div>
+      </div>
+      <div class="bookDiv">
+        <div class="book-imageDiv">
+          <img src="./Images/the kite runner.jfif" alt="book1" />
+        </div>
+        <div class="books-details">
+          <strong class="title">The Kite Runner</strong>
+          <strong class="author-owner">Khaled Hosseini, Jay </strong>
+          <div class="belowDiv">
+            <a href="request">Request <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="bookDiv">
+        <div class="book-imageDiv">
+          <img src="./Images/i wish.jfif" alt="book1" />
+        </div>
+        <div class="books-details">
+          <strong class="title">Wish I could Tell You</strong>
+          <strong class="author-owner">Durjoy Datta, Jay</strong>
+          <div class="belowDiv">
+            <a href="request">Request</a>
+            <a href="learnMore" class="fa fa-arrow-right"></a>
+          </div>
+        </div>
+      </div>
+      <div class="bookDiv">
+        <div class="book-imageDiv">
+          <img src="./Images/think like monk.jfif" alt="book1" />
+        </div>
+        <div class="books-details">
+          <strong class="title">Think Like Monk</strong>
+          <strong class="author-owner">Jay Shetty, Jay</strong>
+          <div class="belowDiv">
+            <a href="request">Request <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Books Section Ends -->
+  </body>
+  <script src="main.js"></script>
+</html>
