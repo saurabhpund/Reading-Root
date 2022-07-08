@@ -37,6 +37,11 @@ header .headerDiv {
   width: 50%;
   display: flex;
 }
+
+header .headerDiv .showIcon {
+  visibility: hidden;
+}
+
 header .imageSection {
   height: 100%;
   width: 13em;
@@ -49,8 +54,8 @@ header .imageSection img {
 header nav a {
   margin: 0 12px;
   text-decoration: none;
-  color: var(--navigationIcon);
   position: relative;
+  color: var(--navigationIcon);
   font-weight: 500;
   font-family: sans-serif;
 }
@@ -59,8 +64,8 @@ header nav a .notify {
   position: absolute;
   top: 0;
   right: 0;
-  width: .4em;
-  height: .4em;
+  width: 0.4em;
+  height: 0.4em;
   background-color: red;
   border-radius: 50%;
 }
@@ -74,7 +79,6 @@ header nav a:hover {
 /** Filter Section Starts */
 
 .filterDiv {
-  min-height: 3em;
   display: flex;
   flex-direction: column;
   margin: 20px 0;
@@ -151,15 +155,15 @@ header nav a:hover {
 .filterDiv .moreDiv {
   color: var(--primary);
   align-items: center;
-  padding: 10px 0;
+  padding: 5px 0;
   justify-content: space-between;
-  width: 60%;
+  width: 80%;
   display: none;
 }
 
 .filterDiv .moreDiv label:not(:nth-child(3)) {
   font-size: 18px;
-  margin: 0 15px;
+  margin: 0 1em;
   width: 40%;
   display: flex;
   align-items: center;
@@ -223,14 +227,16 @@ header nav a:hover {
 /** Books Section Starts */
 .books {
   display: flex;
-  padding: 20px 40px;
+  padding: 20px 30px;
   flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .books .bookDiv {
   overflow: hidden;
   background-color: #f1f1f1;
-  margin: 10px 20px;
+  margin: 10px 15px;
   width: 17rem;
   display: flex;
   flex-direction: column;
@@ -248,7 +254,8 @@ header nav a:hover {
   width: inherit;
 }
 
-.books .bookDiv .books-details {
+.books .bookDiv .books-details,
+.books .bookDiv .books-details .titleDiv {
   color: var(--darkblue);
   display: flex;
   flex-direction: column;
@@ -256,30 +263,44 @@ header nav a:hover {
   height: 28%;
 }
 
-.books .bookDiv .books-details .title {
+.books .bookDiv .books-details .titleDiv .title {
   font-size: 1.2em;
   margin: 5px;
 }
 
-.books .bookDiv .books-details .author-owner {
+.books .bookDiv .books-details .titleDiv .author-owner {
   font-size: 12px;
   margin: 5px;
   color: gray;
 }
 
 .books .bookDiv .books-details .belowDiv {
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 8px 15px;
-  border-radius: 25px;
-  cursor: pointer;
-  border: 1px solid var(--secondary);
-  transition: color 1s ease-in;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .books .bookDiv .books-details .belowDiv a {
-  color: #a2671a;
-  margin: 0 3px;
-  text-decoration: none;
+  border: 1px solid var(--tertiary);
+  color: var(--tertiary);
+  padding: 0.5em 0.8em;
+  width: 15rem;
+  text-align: center;
+  border-radius: 25px;
+  transition: background-color 1s ease;
+}
+.books .bookDiv .books-details .belowDiv a:first-child:hover {
+  color: white;
+  background-color: var(--tertiary);
+}
+
+.books .bookDiv .books-details .belowDiv a:last-child {
+  display: none;
+  color: var(--primary);
+  background-color: var(--secondary);
 }
 
 .books .bookDiv .books-details .belowDiv:hover ~ a {
@@ -288,15 +309,55 @@ header nav a:hover {
 
 @media screen and (max-width: 768px) {
   header {
-    flex-direction: column;
-    justify-content: center;
     padding: 10px 0;
+    width: 100%;
   }
 
-  header .headerDiv{
+  header .headerDiv {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    position: relative;
     width: 100%;
+    padding-right: 1.5em;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .headerDiv .showIcon {
+    visibility: visible;
+    color: var(--secondary);
+    font-size: 1.5em;
+  }
+
+  header nav {
+    position: absolute;
+    text-align: center;
+    gap: 10px;
+    width: 10em;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 60px;
+    right: 20px;
+    background-color: var(--primary);
+    padding: 10px 0;
+    display: none;
+    flex-direction: column;
+    box-shadow: -1px -1px 10px gray;
+  }
+
+  header nav a {
+    width: 100%;
+    position: relative;
+    height: 100%;
+  }
+
+  header .show{
+    display: flex;
+  }
+
+  header nav a .notify {
+    right: 45%;
   }
 
   .books {
@@ -305,7 +366,9 @@ header nav a:hover {
   }
 
   .filterDiv .filterDiv-main {
-    padding: 0;
+    padding: 10px 0;
+    height: 5em;
+    justify-content: none;
   }
 
   .filterDiv .filterDiv-main h2 {
@@ -319,28 +382,39 @@ header nav a:hover {
   .filterDiv .filterDiv-main .filterDiv-filterSection label {
     font-size: 1em;
   }
-  
-  .filterDiv .moreDiv{
-    width: 100%;
-  }
-}
 
-@media screen and (max-width: 600px) {
-  header nav {
-    display: flex;
+  .filterDiv .moreDiv {
     width: 100%;
+    padding-bottom: 10px;
+    gap: 5px;
+    flex-direction: column;
+  }
+  
+  .filterDiv .moreDiv label{
+    text-align: center;
+    font-size: 12px;
     margin: 0;
     padding: 0;
-    font-size: .5em;
-    flex-wrap: wrap;
-  } 
-
-  .filterDiv{
-    padding: 0;
-    height: 4em;
   }
-  .filterDiv .filterDiv-main{
+
+  .filterDiv .moreDiv label:nth-child(3){
+    width: auto;
+  }
+
+}
+
+
+/** Media for 768px ends  */
+
+@media screen and (max-width: 500px) {
+  .filterDiv {
+    padding: 0;
+    height: 10%;
+  }
+  .filterDiv .filterDiv-main {
     flex-direction: column;
+    text-align: center;
+    align-items: center;
   }
   .filterDiv .filterDiv-main h2 {
     width: 100%;
@@ -355,9 +429,71 @@ header nav a:hover {
   }
 
   .filterDiv .filterDiv-main .filterDiv-filterSection label {
-    font-size: .9em;
+    font-size: 0.9em;
   }
-  .filterDiv .filterDiv-main .filterDiv-filterSection .inputDiv{
+  .filterDiv .filterDiv-main .filterDiv-filterSection .inputDiv {
     height: 15px;
+  }
+  .filterDiv .moreDiv {
+    justify-content: space-evenly;
+  }
+
+  .books {
+    padding: 10px;
+  }
+
+  .books .bookDiv {
+    height: 12em;
+    flex-direction: row;
+    box-shadow: none;
+    background: none;
+    width: 100%;
+  }
+
+  .books .bookDiv .book-imageDiv {
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: -2px 10px 20px gray;
+    padding: 2px;
+    height: 100%;
+  }
+
+  .books .bookDiv .book-imageDiv img {
+    height: inherit;
+    width: 100%;
+  }
+
+  .books .bookDiv .books-details {
+    display: block;
+    margin-left: 10px;
+    width: 60%;
+    padding: 1em;
+    text-align: center;
+    justify-content: center;
+  }
+  .books .bookDiv .books-details .titleDiv {
+    display: flex;
+    height: 5em;
+    flex-direction: column;
+    border: 2px solid #999;
+  }
+
+  .books .bookDiv .books-details .belowDiv {
+    margin-top: 5px;
+  }
+
+  .books .bookDiv .books-details .belowDiv a {
+    border-radius: 5px;
+    width: 115%;
+  }
+
+  .books .bookDiv .books-details .belowDiv a:first-child {
+    color: var(--primary);
+    background-color: var(--tertiary);
+  }
+
+  .books .bookDiv .books-details .belowDiv a:last-child {
+    display: block;
+    margin: 5px 0;
   }
 }
